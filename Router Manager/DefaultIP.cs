@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Router_Manager
 {
@@ -16,10 +17,28 @@ namespace Router_Manager
         {
             InitializeComponent();
             // Setting Default.IP to the TextBox IPbox
-            System.IO.StreamReader File = new System.IO.StreamReader(@"Default.IP");
-            String IPtxt = File.ReadLine();
-            IPbox.Text = IPtxt;
-            File.Close();
+            //System.IO.StreamWriter Filu = new System.IO.StreamWriter(@"Default.IP");
+            //System.IO.StreamReader File = new System.IO.StreamReader(@"Default.IP");
+            //String IPtxt = File.ReadLine();
+            //IPbox.Text = IPtxt;
+            //File.Close();
+            
+            //StreamReader sr = new StreamReader(@"Data\Default.IP");
+            //string ur = sr.ReadLine();
+            //IPbox.Text = ur;
+            string ar = File.ReadAllLines(@"Data\Default.IP").Skip(1).Take(1).First();
+            char[] w = new char[ar.Length];
+            using (StringReader sr = new StringReader(ar))
+            {
+                sr.Read(w, 0, 5);
+                //textBox1.Text = b;
+                string s = new string(w);
+                System.Diagnostics.Debug.WriteLine(s);
+                Array[] rr = new Array[ar.Length];
+                listBox1.Items.AddRange(rr) = rr;
+            }
+            
+
         }
 
         private void IPbox_KeyDown(object sender, KeyEventArgs e)
@@ -57,7 +76,7 @@ namespace Router_Manager
         }
         private void DefaultIP_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Alt && e.KeyCode == Keys.C)
+            if (e.Alt && (e.KeyCode == Keys.C))
             {
                 this.changeb.Focus();
             }

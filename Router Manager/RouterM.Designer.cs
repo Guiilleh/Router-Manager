@@ -43,6 +43,7 @@
             this.actualaddress = new System.Windows.Forms.Label();
             this.refresh = new System.Windows.Forms.Button();
             this.gotob = new System.Windows.Forms.Button();
+            this.iptxt = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,8 +53,11 @@
             this.webBrowser1.Location = new System.Drawing.Point(0, 27);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(784, 535);
+            this.webBrowser1.Size = new System.Drawing.Size(784, 534);
             this.webBrowser1.TabIndex = 1;
+            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.showURL_2);
+            this.webBrowser1.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.showURL_1);
+            this.webBrowser1.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.webBrowser1_PreviewKeyDown);
             // 
             // menuStrip1
             // 
@@ -66,7 +70,6 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(784, 27);
             this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // FileM
             // 
@@ -109,12 +112,12 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(113, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
             // 
             // H_AboutM
             // 
             this.H_AboutM.Name = "H_AboutM";
-            this.H_AboutM.Size = new System.Drawing.Size(116, 22);
+            this.H_AboutM.Size = new System.Drawing.Size(152, 22);
             this.H_AboutM.Text = "&About...";
             this.H_AboutM.Click += new System.EventHandler(this.H_AboutM_Click);
             // 
@@ -126,7 +129,7 @@
             // 
             // defaultIPb
             // 
-            this.defaultIPb.Location = new System.Drawing.Point(323, 1);
+            this.defaultIPb.Location = new System.Drawing.Point(323, 3);
             this.defaultIPb.Name = "defaultIPb";
             this.defaultIPb.Size = new System.Drawing.Size(60, 21);
             this.defaultIPb.TabIndex = 4;
@@ -139,7 +142,7 @@
             // 
             this.actualaddress.AutoSize = true;
             this.actualaddress.BackColor = System.Drawing.SystemColors.Control;
-            this.actualaddress.Location = new System.Drawing.Point(470, 5);
+            this.actualaddress.Location = new System.Drawing.Point(470, 7);
             this.actualaddress.Name = "actualaddress";
             this.actualaddress.Size = new System.Drawing.Size(38, 13);
             this.actualaddress.TabIndex = 0;
@@ -147,7 +150,7 @@
             // 
             // refresh
             // 
-            this.refresh.Location = new System.Drawing.Point(394, 1);
+            this.refresh.Location = new System.Drawing.Point(394, 3);
             this.refresh.Name = "refresh";
             this.refresh.Size = new System.Drawing.Size(60, 21);
             this.refresh.TabIndex = 5;
@@ -157,7 +160,7 @@
             // 
             // gotob
             // 
-            this.gotob.Location = new System.Drawing.Point(265, 1);
+            this.gotob.Location = new System.Drawing.Point(265, 3);
             this.gotob.Name = "gotob";
             this.gotob.Size = new System.Drawing.Size(45, 21);
             this.gotob.TabIndex = 3;
@@ -165,11 +168,22 @@
             this.gotob.UseVisualStyleBackColor = true;
             this.gotob.Click += new System.EventHandler(this.gotoB_Click);
             // 
+            // iptxt
+            // 
+            this.iptxt.AutoSize = true;
+            this.iptxt.Dock = System.Windows.Forms.DockStyle.Right;
+            this.iptxt.Location = new System.Drawing.Point(768, 27);
+            this.iptxt.Name = "iptxt";
+            this.iptxt.Size = new System.Drawing.Size(16, 13);
+            this.iptxt.TabIndex = 0;
+            this.iptxt.Text = "...";
+            // 
             // RouterM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.iptxt);
             this.Controls.Add(this.gotob);
             this.Controls.Add(this.refresh);
             this.Controls.Add(this.actualaddress);
@@ -182,8 +196,6 @@
             this.Name = "RouterM";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Router Manager";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.gotoB_Click);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -207,6 +219,7 @@
         private System.Windows.Forms.ToolStripMenuItem F_ChangeIPM;
         private System.Windows.Forms.Button gotob;
         private System.Windows.Forms.ToolStripTextBox IP1;
+        private System.Windows.Forms.Label iptxt;
     }
 }
 

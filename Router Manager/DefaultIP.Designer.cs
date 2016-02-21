@@ -32,6 +32,8 @@
             this.IPbox = new System.Windows.Forms.TextBox();
             this.changeb = new System.Windows.Forms.Button();
             this.cancelb = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // IPbox
@@ -64,11 +66,29 @@
             this.cancelb.UseVisualStyleBackColor = true;
             this.cancelb.Click += new System.EventHandler(this.cancelb_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(110, 1);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 65);
+            this.textBox1.TabIndex = 3;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(12, 1);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(58, 69);
+            this.listBox1.TabIndex = 4;
+            // 
             // DefaultIP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(250, 91);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.cancelb);
             this.Controls.Add(this.changeb);
             this.Controls.Add(this.IPbox);
@@ -88,5 +108,7 @@
         private System.Windows.Forms.TextBox IPbox;
         private System.Windows.Forms.Button changeb;
         private System.Windows.Forms.Button cancelb;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

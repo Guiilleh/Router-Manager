@@ -12,62 +12,96 @@ using System.Windows.Forms;
 
 namespace Router_Manager
 {
+    //test
     public partial class RouterM : Form
     {
         public RouterM()
         {
-            InitializeComponent();                                                      // Start
-            System.IO.StreamReader File = new System.IO.StreamReader(@"Default.IP");    // Renders IP from file
-            String IPtxt = File.ReadLine();                                             // Converts IP to String
-            IP1.Text = IPtxt;                                                      // Sets IP box to IP from file
-            File.Close();                                                               // Closes used IP file
-            
+            InitializeComponent();
+            webBrowser1.Navigate(new Uri("http://google.com"));
         }
-        private void gotoB_Click(object sender, EventArgs e)
+        public static void setorgetvalues()         // re-do
         {
-            String IPs = IP1.Text;                              // Renders IP from box to String
-            var address = "http://" + IPs;                      // Converts String to URL
-            webBrowser1.Navigate(new Uri(address));             // Opens new URL
-            actualaddress.Text = address;                       // Shows opened URL
+            //do
+
         }
-        private void IP1_KeyDown(object sender, KeyEventArgs e)
+        public static void setvalueoflabel()        // re-do
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                gotoB_Click(sender, e);                         // Executes gotoB_Click
-            }
+            //do
+
         }
         private void defaultIPb_Click(object sender, EventArgs e)
         {
-            System.IO.StreamReader File = new System.IO.StreamReader(@"Default.IP");    // Renders IP from file
-            String IPtxt = File.ReadLine();                                             // Converts IP to String
-            var address = "http://" + IPtxt;                                            // Converts String to URL
-            webBrowser1.Navigate(new Uri(address));                                     // Opens new URL
-            actualaddress.Text = address;                                               // Shows opened URL
-            //actualaddress.Text = webBrowser1.Url.ToString();                            // Shows ACTUAL URL
-            IP1.Text = IPtxt;                                                           // Default IP to box
+            // This is supposed to take you to the address specified by Default.IP
+            // Gotta re-do
         }
-        private void refresh_Click(object sender, EventArgs e)
+        private void gotoB_Click(object sender, EventArgs e)        // Appears to be working
         {
-            if (!webBrowser1.Url.Equals("about:blank"))             // Refresh method
-            {                                                       // Refresh method
-                webBrowser1.Refresh();                              // Refresh method
-                actualaddress.Text = webBrowser1.Url.ToString();    // Shows ACTUAL URL
-            }                                                       // Refresh method
+            String IPs = IP1.Text;
+            var address = "http://" + IPs;
+            webBrowser1.Navigate(new Uri(address));
         }
-        private void F_ExitM_Click(object sender, EventArgs e)
+        private void IP1_KeyDown(object sender, KeyEventArgs e)     // Working
         {
-            Close(); // Closes main window
+            if (e.KeyCode == Keys.Enter)
+            {
+                gotoB_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.F1)
+            {
+                var About = new About();
+                About.ShowDialog();
+            }
         }
-        private void F_ChangeIPM_Click(object sender, EventArgs e)
+        private void refresh_Click(object sender, EventArgs e)          // Working
         {
-            DefaultIP asd1 = new DefaultIP();   // Creates new DefaultIP window
-            asd1.ShowDialog();                  // Opens new DefaultIP window
+            if (!webBrowser1.Url.Equals("about:blank"))
+            {
+                webBrowser1.Refresh();
+            }
         }
-        private void H_AboutM_Click(object sender, EventArgs e)
+        private void F_ExitM_Click(object sender, EventArgs e)          // Working
         {
-            About asd2 = new About();   // Creates new About window
-            asd2.ShowDialog();          // Opens new About window
+            Close();
+        }
+        private void F_ChangeIPM_Click(object sender, EventArgs e)      // Working
+        {
+            var DefaultIP = new DefaultIP();
+            DefaultIP.ShowDialog();
+        }
+        private void H_AboutM_Click(object sender, EventArgs e)         // Working
+        {
+            var About = new About();
+            About.ShowDialog();
+        }
+        private void showURL_1(object sender, WebBrowserNavigatedEventArgs e)   // Working
+        {
+            actualaddress.Text = webBrowser1.Url.ToString();
+        }
+        private void showURL_2(object sender, WebBrowserDocumentCompletedEventArgs e)   // Working
+        {
+            actualaddress.Text = webBrowser1.Url.ToString();
+        }
+
+        private void webBrowser1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                gotoB_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.F6)
+            {
+                IP1.Focus();
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                refresh_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.F1)
+            {
+                var asd2 = new About();
+                asd2.ShowDialog(); 
+            }
         }
     }
 }
