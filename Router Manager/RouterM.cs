@@ -12,7 +12,6 @@ using System.Windows.Forms;
 
 namespace Router_Manager
 {
-    //test
     public partial class RouterM : Form
     {
         public RouterM()
