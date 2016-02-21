@@ -35,7 +35,7 @@ namespace Router_Manager
                 string s = new string(w);
                 System.Diagnostics.Debug.WriteLine(s);
                 Array[] rr = new Array[ar.Length];
-                listBox1.Items.AddRange(rr) = rr;
+                //listBox1.Items.AddRange(rr) = rr;
             }
             
 
