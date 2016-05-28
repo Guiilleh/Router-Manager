@@ -3,7 +3,7 @@
 ## Internet Browser dedicated to Router Management
 
 ### IP/Home Address:
-* 192.168.1.1, as this is the default LAN IP Address of most of the routers out there, it can also be changed.
+* **192.168.1.1**, as this is the default LAN IP Address of most of the routers out there, it can also be changed.
 
 ### Features:
 * IP Address/URL can be changed, you can press Enter after typing it, or click over "Go to"
